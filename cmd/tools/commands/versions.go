@@ -9,10 +9,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var verbose bool
-var kind string
-var dev bool
-
 func NewVersionBumpCmd() *cobra.Command {
 
 	cmd := &cobra.Command{
