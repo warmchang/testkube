@@ -116,6 +116,29 @@ func (c *JobClient) LaunchK8sJob(jobName string, image string, execution kubtest
 	}, nil
 }
 
+func (c *JobClient) GetLogsChannel(podName string, containerName string, endMessage string) (lines chan string, err error) {
+	lines = make(chan string, 100000)
+
+	pods, err := c.ClientSet.CoreV1().Pods(c.Namespace).List(context.TODO(), metav1.ListOptions{LabelSelector: "job-name=" + jobName})
+	if err != nil {
+		return lines, err
+	}
+
+	for _, pod := range pods.Items {
+		if pod.Status.Phase != v1.PodRunning {
+			if pod.Labels["job-name"] == jobName {
+				if err := wait.PollImmediate(time.Second, time.Duration(0)*time.Second, k8sclient.IsPodRunning(c.ClientSet, pod.Name, c.Namespace)); err != nil {
+					return lines, err
+				}
+			}
+			result, err = c.GetPodLogs(pod.Name, jobName, jobName)
+			if err != nil {
+				return lines, err
+			}
+		}
+	}
+}
+
 func (c *JobClient) GetPodLogs(podName string, containerName string, endMessage string) (string, error) {
 	count := int64(100)
 	var toReturn string
