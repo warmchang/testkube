@@ -16,6 +16,7 @@ nav:
   - Welcome: index.md
   - Installation: installing.md
   - Getting Started: getting-started.md
+  - Dashboard: dashboard.md
   - Managing test scripts:
       - Creating: scripts-creating.md
       - Running: scripts-running.md
