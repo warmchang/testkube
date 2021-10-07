@@ -36,13 +36,19 @@ If you want kubtest to provide the endpoint for the kubest dashboard use `kubect
 ## Kubtest's Dashboard Ingress Configuration
 
 Dashboard will bring you web-based UI for managing and seeing all the tests and its results via web-browser.
-### Enabling dashboard
+
+### Enabling the dashboard
+
 In order to enable dashboard please provide Helm's set value as follow during installation:
 ```
 helm install kubtest kubeshop/kubtest --set kubtest-dashboard.enabled="true"
 ```
 By default it's disabled
-### configuration for the nginx-based ingress controller with the cert-manager pointed at Let'sencrypt. 
+
+### Configuring SSL with Let's Encrypt.
+
+See below how to configure the nginx-based ingress controller with the cert-manager pointed at Let'sencrypt
+
 ```
 apiVersion: networking.k8s.io/v1
 kind: Ingress
