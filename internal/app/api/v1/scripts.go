@@ -78,7 +78,7 @@ func (s testkubeAPI) CreateScript() fiber.Handler {
 			}
 		}
 
-		script, err := s.ScriptsClient.Create(&scriptsv1.Script{
+		scriptSpec := scriptsv1.Script{
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      request.Name,
 				Namespace: request.Namespace,
@@ -89,7 +89,14 @@ func (s testkubeAPI) CreateScript() fiber.Handler {
 				Content:    request.Content,
 				Repository: repository,
 			},
-		})
+		}
+
+		// if dry run mode - return only script content
+		if request.DryRun {
+			return c.JSON(scriptSpec)
+		}
+
+		script, err := s.ScriptsClient.Create(&scriptSpec)
 
 		s.Metrics.IncCreateScript(script.Spec.Type_, err)
 

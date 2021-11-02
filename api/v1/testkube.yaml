@@ -881,6 +881,10 @@ components:
           type: string
           description: kubernetes namespace (defaults to 'testkube')
           example: testkube
+        dryRun:
+          type: boolean
+          description: only test script creation, will return script obj without creating it
+          example: false
         inputType:
           type: string
           description: >

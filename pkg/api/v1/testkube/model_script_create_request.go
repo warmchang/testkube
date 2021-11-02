@@ -17,6 +17,8 @@ type ScriptCreateRequest struct {
 	Type_ string `json:"type,omitempty"`
 	// kubernetes namespace (defaults to 'testkube')
 	Namespace string `json:"namespace,omitempty"`
+	// only test script creation, will return script obj without creating it
+	DryRun bool `json:"dryRun,omitempty"`
 	// script content type can be:  - direct content - created from file,  - git repo directory checkout in case when test is some kind of project or have more than one file,
 	InputType  string      `json:"inputType,omitempty"`
 	Repository *Repository `json:"repository,omitempty"`

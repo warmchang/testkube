@@ -1,6 +1,7 @@
 package scripts
 
 import (
+	"fmt"
 	"io/ioutil"
 	"os"
 
@@ -9,6 +10,7 @@ import (
 	"github.com/kubeshop/testkube/pkg/test/script/detector"
 	"github.com/kubeshop/testkube/pkg/ui"
 	"github.com/spf13/cobra"
+	"gopkg.in/yaml.v2"
 )
 
 var (
@@ -18,6 +20,7 @@ var (
 	uri          string
 	gitBranch    string
 	gitPath      string
+	dryRun       bool
 )
 
 func NewCreateScriptsCmd() *cobra.Command {
@@ -67,6 +70,7 @@ func NewCreateScriptsCmd() *cobra.Command {
 				Content:    string(content),
 				Namespace:  namespace,
 				Repository: repository,
+				DryRun:     dryRun,
 			}
 
 			// try to detect type if none passed
@@ -79,6 +83,15 @@ func NewCreateScriptsCmd() *cobra.Command {
 			}
 
 			script, err = client.CreateScript(options)
+			if dryRun {
+				fmt.Printf("%+v\n", script)
+
+				out, err := yaml.Marshal(script)
+				ui.ExitOnError("dry-run: getting script content - "+name+" in namespace "+namespace, err)
+				println(string(out))
+				return
+			}
+
 			ui.ExitOnError("creating script "+name+" in namespace "+namespace, err)
 
 			ui.Success("Script created", name)
@@ -93,6 +106,8 @@ func NewCreateScriptsCmd() *cobra.Command {
 	cmd.Flags().StringVarP(&uri, "uri", "", "", "if resource need to be loaded from URI")
 	cmd.Flags().StringVarP(&gitBranch, "git-branch", "", "", "if uri is git repository we can set additional branch parameter")
 	cmd.Flags().StringVarP(&gitPath, "git-path", "", "", "if repository is big we need to define additional path to directory/file to checkout partially")
+
+	cmd.Flags().BoolVar(&dryRun, "dry-run", false, "get yaml content instead of create it on cluster")
 
 	return cmd
 }
