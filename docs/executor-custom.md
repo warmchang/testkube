@@ -65,7 +65,30 @@ Let's assume that user will create test which content will be simply URI to test
 
 ```go
 func (r *CurlRunner) Run(execution testkube.Execution) (result testkube.ExecutionResult, err error) {
+	// ScriptContent will have URI
+	uri := execution.ScriptContent
+	resp, err := http.Get(uri)
+	if err != nil {
+		return result, err
+	}
+	defer resp.Body.Close()
 
+	b, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return result, err
+	}
+
+	// if get is successful return success result
+	if resp.StatusCode == 200 {
+		return testkube.ExecutionResult{
+			Status: testkube.ExecutionStatusSuccess,
+			Output: string(b),
+		}, nil
+	}
+
+	// else we'll return error to simplify example
+	err = fmt.Errorf("invalid status code %d, (uri:%s)", resp.StatusCode, uri)
+	return result.Err(err), nil
 }
 ```
 
