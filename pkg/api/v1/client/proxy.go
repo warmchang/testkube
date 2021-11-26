@@ -145,7 +145,7 @@ func (c ProxyScriptsAPI) CreateScript(options CreateScriptOptions) (script testk
 
 // ExecuteScript starts new external script execution, reads data and returns ID
 // Execution is started asynchronously client can check later for results
-func (c ProxyScriptsAPI) ExecuteScript(id, namespace, executionName string, executionParams map[string]string) (execution testkube.Execution, err error) {
+func (c ProxyScriptsAPI) ExecuteScript(id, namespace, executionName string, executionParams map[string]string, args []string) (execution testkube.Execution, err error) {
 	// TODO call executor API - need to get parameters (what executor?) taken from CRD?
 	uri := c.getURI("/scripts/%s/executions", id)
 
@@ -153,6 +153,7 @@ func (c ProxyScriptsAPI) ExecuteScript(id, namespace, executionName string, exec
 		Name:      executionName,
 		Namespace: namespace,
 		Params:    executionParams,
+		Args:      args,
 	}
 
 	body, err := json.Marshal(request)

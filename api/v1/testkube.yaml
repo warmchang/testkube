@@ -942,6 +942,14 @@ components:
           example:
             users: "3"
             prefix: "some-"
+        args:
+          type: array
+          description: "additional arguments/flags passed to executor binary"
+          additionalProperties:
+            type: string
+          example: ["--concurrency", "2", "--remote", "--some", "blabla"]
+          items:
+            type: string
 
     ScriptCreateRequest:
       description: scripts create request body
