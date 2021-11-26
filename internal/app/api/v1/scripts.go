@@ -436,6 +436,8 @@ func NewExecutionFromExecutionOptions(options client.ExecuteOptions) testkube.Ex
 		options.Request.Params,
 	)
 
+	execution.Args = options.Request.Args
+
 	execution.Repository = (*testkube.Repository)(options.ScriptSpec.Repository)
 
 	return execution
