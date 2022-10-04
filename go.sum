@@ -203,9 +203,10 @@ github.com/go-openapi/swag v0.21.1/go.mod h1:QYRuS/SOXUCsnplDa677K7+DxSOj6IPNl/e
 github.com/go-stack/stack v1.8.0/go.mod h1:v0f6uXyyMGvRgIKkXu+yp6POWl0qKG85gN/melR3HDY=
 github.com/go-test/deep v1.0.4 h1:u2CU3YKy9I2pmu9pX0eq50wCgjfGIt539SqR7FbHiho=
 github.com/go-test/deep v1.0.4/go.mod h1:wGDj63lr65AM2AQyKZd/NYHGb0R+1RLqB8NKt3aSFNA=
-github.com/gofiber/adaptor/v2 v2.1.26 h1:L/vcmySP12LlOS/ifZ3olgRct/92/2LHu+69rHVIneA=
-github.com/gofiber/adaptor/v2 v2.1.26/go.mod h1:ufH3ik6czF6EATRXkS3cETFXYuBTBQCFyzJlM/ZYvB8=
+github.com/gofiber/adaptor/v2 v2.1.27 h1:I3Xjn1qaH6W09shPi8F/kz98AncwbVYWFBV4niBBC0Q=
+github.com/gofiber/adaptor/v2 v2.1.27/go.mod h1:xcc+UqppJ+XfYVcqxp2fHyoqKctQxxvZ/IyUybNSIlQ=
 github.com/gofiber/fiber/v2 v2.37.0/go.mod h1:xm3pDGlfE1xqVKb77iH8weLU0FFoTeWeK3nbiYM2Nh0=
+github.com/gofiber/fiber/v2 v2.37.1/go.mod h1:j3UslgQeJQP3mNhBxHnLLE8TPqA1Fd/lrl4gD25rRUY=
 github.com/gofiber/fiber/v2 v2.38.1 h1:GEQ/Yt3Wsf2a30iTqtLXlBYJZso0JXPovt/tmj5H9jU=
 github.com/gofiber/fiber/v2 v2.38.1/go.mod h1:t0NlbaXzuGH7I+7M4paE848fNWInZ7mfxI/Er1fTth8=
 github.com/gofiber/websocket/v2 v2.0.25 h1:lmA+TiC/gYkvTUSJcmVHvg0w5Uq4oTFtAqhHFRmlRq4=
