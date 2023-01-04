@@ -5,7 +5,7 @@ go 1.18
 require (
 	github.com/Masterminds/semver v1.5.0
 	github.com/bmizerany/perks v0.0.0-20220928223023-dcf613bf3504
-	github.com/cli/cli/v2 v2.20.2
+	github.com/cli/cli/v2 v2.21.2
 	github.com/denisbrodbeck/machineid v1.0.1
 	github.com/dustinkirkland/golang-petname v0.0.0-20191129215211-8e5a1ed0cff0
 	github.com/fasthttp/websocket v1.5.0
@@ -48,8 +48,8 @@ require (
 	github.com/briandowns/spinner v1.19.0 // indirect
 	github.com/charmbracelet/glamour v0.5.1-0.20220727184942-e70ff2d969da // indirect
 	github.com/cli/browser v1.1.0 // indirect
-	github.com/cli/go-gh v0.1.3-0.20221102170023-e3ec45fb1d1b // indirect
-	github.com/cli/safeexec v1.0.0 // indirect
+	github.com/cli/go-gh v1.0.0 // indirect
+	github.com/cli/safeexec v1.0.1 // indirect
 	github.com/cli/shurcooL-graphql v0.0.2 // indirect
 	github.com/dlclark/regexp2 v1.7.0 // indirect
 	github.com/emicklei/go-restful/v3 v3.9.0 // indirect
@@ -73,7 +73,7 @@ require (
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
-	github.com/mattn/go-isatty v0.0.16 // indirect
+	github.com/mattn/go-isatty v0.0.17 // indirect
 	github.com/mgutz/ansi v0.0.0-20200706080929-d51e80ef957d // indirect
 	github.com/microcosm-cc/bluemonday v1.0.21 // indirect
 	github.com/montanaflynn/stats v0.6.6 // indirect
@@ -151,10 +151,10 @@ require (
 	golang.org/x/crypto v0.0.0-20221012134737-56aed061732a // indirect
 	golang.org/x/net v0.2.0 // indirect
 	golang.org/x/oauth2 v0.0.0-20221014153046-6fdb5e3db783
-	golang.org/x/sync v0.0.0-20220929204114-8fcdb60fdcc0
+	golang.org/x/sync v0.1.0
 	golang.org/x/sys v0.2.0 // indirect
 	golang.org/x/term v0.2.0 // indirect
-	golang.org/x/text v0.4.0
+	golang.org/x/text v0.5.0
 	golang.org/x/time v0.0.0-20220922220347-f3bd1da661af // indirect
 	gomodules.xyz/jsonpatch/v2 v2.2.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
