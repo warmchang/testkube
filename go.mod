@@ -56,7 +56,7 @@ require (
 	github.com/briandowns/spinner v1.19.0 // indirect
 	github.com/charmbracelet/glamour v0.5.1-0.20220727184942-e70ff2d969da // indirect
 	github.com/cli/browser v1.1.0 // indirect
-	github.com/cli/go-gh v0.1.3-0.20221102170023-e3ec45fb1d1b // indirect
+	github.com/cli/go-gh v1.2.1 // indirect
 	github.com/cli/safeexec v1.0.0 // indirect
 	github.com/cli/shurcooL-graphql v0.0.2 // indirect
 	github.com/dlclark/regexp2 v1.8.0 // indirect
@@ -159,12 +159,12 @@ require (
 	go.uber.org/atomic v1.10.0 // indirect
 	go.uber.org/multierr v1.9.0 // indirect
 	golang.org/x/crypto v0.1.0 // indirect
-	golang.org/x/net v0.5.0 // indirect
+	golang.org/x/net v0.7.0 // indirect
 	golang.org/x/oauth2 v0.1.0
 	golang.org/x/sync v0.1.0
-	golang.org/x/sys v0.4.0 // indirect
-	golang.org/x/term v0.4.0 // indirect
-	golang.org/x/text v0.6.0
+	golang.org/x/sys v0.5.0 // indirect
+	golang.org/x/term v0.5.0 // indirect
+	golang.org/x/text v0.7.0
 	golang.org/x/time v0.0.0-20220922220347-f3bd1da661af // indirect
 	gomodules.xyz/jsonpatch/v2 v2.2.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
