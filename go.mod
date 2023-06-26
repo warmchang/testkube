@@ -42,7 +42,7 @@ require (
 	github.com/spf13/cobra v1.7.0
 	github.com/stretchr/testify v1.8.2
 	github.com/valyala/fasthttp v1.44.0
-	github.com/vektah/gqlparser/v2 v2.5.1
+	github.com/vektah/gqlparser/v2 v2.5.5
 	go.mongodb.org/mongo-driver v1.11.0
 	go.uber.org/zap v1.24.0
 	google.golang.org/grpc v1.51.0
