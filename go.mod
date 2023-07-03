@@ -34,7 +34,7 @@ require (
 	github.com/onsi/gomega v1.27.6
 	github.com/otiai10/copy v1.9.0
 	github.com/prometheus/client_golang v1.14.0
-	github.com/pterm/pterm v0.12.59
+	github.com/pterm/pterm v0.12.62
 	github.com/rikatz/kubepug v1.4.0
 	github.com/segmentio/analytics-go/v3 v3.2.1
 	github.com/skratchdot/open-golang v0.0.0-20200116055534-eef842397966
@@ -56,6 +56,7 @@ require (
 require (
 	atomicgo.dev/cursor v0.1.1 // indirect
 	atomicgo.dev/keyboard v0.2.9 // indirect
+	atomicgo.dev/schedule v0.0.2 // indirect
 	cloud.google.com/go/compute v1.12.1 // indirect
 	cloud.google.com/go/compute/metadata v0.2.1 // indirect
 	github.com/AlecAivazis/survey/v2 v2.3.6 // indirect
@@ -98,7 +99,7 @@ require (
 	github.com/klauspost/cpuid/v2 v2.2.3 // indirect
 	github.com/kr/pretty v0.3.1 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
-	github.com/lithammer/fuzzysearch v1.1.5 // indirect
+	github.com/lithammer/fuzzysearch v1.1.8 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
@@ -191,8 +192,8 @@ require (
 	golang.org/x/net v0.8.0 // indirect
 	golang.org/x/oauth2 v0.1.0
 	golang.org/x/sync v0.1.0
-	golang.org/x/sys v0.7.0 // indirect
-	golang.org/x/term v0.6.0 // indirect
+	golang.org/x/sys v0.8.0 // indirect
+	golang.org/x/term v0.8.0 // indirect
 	golang.org/x/text v0.9.0
 	golang.org/x/time v0.0.0-20220922220347-f3bd1da661af // indirect
 	gomodules.xyz/jsonpatch/v2 v2.2.0 // indirect
