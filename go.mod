@@ -44,7 +44,7 @@ require (
 	github.com/valyala/fasthttp v1.44.0
 	github.com/vektah/gqlparser/v2 v2.5.2-0.20230422221642-25e09f9d292d
 	go.mongodb.org/mongo-driver v1.11.0
-	go.uber.org/zap v1.24.0
+	go.uber.org/zap v1.25.0
 	google.golang.org/grpc v1.51.0
 	gopkg.in/yaml.v2 v2.4.0
 	k8s.io/api v0.25.4
@@ -64,7 +64,6 @@ require (
 	github.com/alecthomas/chroma v0.10.0 // indirect
 	github.com/aymanbagabas/go-osc52 v1.2.1 // indirect
 	github.com/aymerick/douceur v0.2.0 // indirect
-	github.com/benbjohnson/clock v1.3.0 // indirect
 	github.com/bmizerany/assert v0.0.0-20160611221934-b7ed37b82869 // indirect
 	github.com/briandowns/spinner v1.19.0 // indirect
 	github.com/charmbracelet/glamour v0.5.1-0.20220727184942-e70ff2d969da // indirect
@@ -183,8 +182,7 @@ require (
 	github.com/xdg-go/stringprep v1.0.3 // indirect
 	github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e // indirect
 	github.com/youmark/pkcs8 v0.0.0-20201027041543-1326539a0a0a // indirect
-	go.uber.org/atomic v1.10.0 // indirect
-	go.uber.org/multierr v1.9.0 // indirect
+	go.uber.org/multierr v1.10.0 // indirect
 	golang.org/x/crypto v0.1.0 // indirect
 	golang.org/x/net v0.8.0 // indirect
 	golang.org/x/oauth2 v0.1.0
