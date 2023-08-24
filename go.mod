@@ -54,7 +54,7 @@ require (
 )
 
 require (
-	atomicgo.dev/cursor v0.1.1 // indirect
+	atomicgo.dev/cursor v0.2.0 // indirect
 	atomicgo.dev/keyboard v0.2.9 // indirect
 	atomicgo.dev/schedule v0.0.2 // indirect
 	cloud.google.com/go/compute v1.12.1 // indirect
