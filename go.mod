@@ -5,7 +5,7 @@ go 1.18
 require (
 	github.com/99designs/gqlgen v0.17.27
 	github.com/Masterminds/semver v1.5.0
-	github.com/adhocore/gronx v1.6.3
+	github.com/adhocore/gronx v1.6.5
 	github.com/cdevents/sdk-go v0.3.0
 	github.com/cli/cli/v2 v2.20.2
 	github.com/cloudevents/sdk-go/v2 v2.14.0
