@@ -120,7 +120,7 @@ require (
 	github.com/shurcooL/githubv4 v0.0.0-20220922232305-70b4d362a8cb // indirect
 	github.com/shurcooL/graphql v0.0.0-20220606043923-3cf50f8a0a29 // indirect
 	github.com/thlib/go-timezone-local v0.0.0-20210907160436-ef149e42d28e // indirect
-	github.com/urfave/cli/v2 v2.24.4 // indirect
+	github.com/urfave/cli/v2 v2.26.0 // indirect
 	github.com/xrash/smetrics v0.0.0-20201216005158-039620a65673 // indirect
 	github.com/yuin/goldmark v1.5.2 // indirect
 	github.com/yuin/goldmark-emoji v1.0.1 // indirect
