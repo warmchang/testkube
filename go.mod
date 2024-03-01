@@ -16,7 +16,7 @@ require (
 	github.com/fasthttp/websocket v1.5.0
 	github.com/fluxcd/pkg/apis/event v0.2.0
 	github.com/gabriel-vasile/mimetype v1.4.1
-	github.com/go-task/slim-sprig v0.0.0-20230315185526-52ccab3ef572
+	github.com/go-task/slim-sprig v2.20.0+incompatible
 	github.com/gofiber/adaptor/v2 v2.1.29
 	github.com/gofiber/fiber/v2 v2.51.0
 	github.com/gofiber/websocket/v2 v2.1.1
@@ -63,6 +63,7 @@ require (
 	atomicgo.dev/keyboard v0.2.9 // indirect
 	atomicgo.dev/schedule v0.0.2 // indirect
 	github.com/AlecAivazis/survey/v2 v2.3.6 // indirect
+	github.com/Masterminds/goutils v1.1.1 // indirect
 	github.com/agnivade/levenshtein v1.1.1 // indirect
 	github.com/alecthomas/chroma v0.10.0 // indirect
 	github.com/aymanbagabas/go-osc52 v1.2.1 // indirect
@@ -92,6 +93,7 @@ require (
 	github.com/gorilla/css v1.0.1 // indirect
 	github.com/hashicorp/golang-lru/v2 v2.0.1 // indirect
 	github.com/henvic/httpretty v0.1.0 // indirect
+	github.com/huandu/xstrings v1.4.0 // indirect
 	github.com/itchyny/gojq v0.12.14 // indirect
 	github.com/itchyny/timefmt-go v0.1.5 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
