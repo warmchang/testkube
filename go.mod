@@ -5,7 +5,7 @@ go 1.22.3
 require (
 	github.com/99designs/gqlgen v0.17.27
 	github.com/Masterminds/semver v1.5.0
-	github.com/adhocore/gronx v1.6.3
+	github.com/adhocore/gronx v1.8.1
 	github.com/bmatcuk/doublestar/v4 v4.6.1
 	github.com/cdevents/sdk-go v0.3.0
 	github.com/cli/cli/v2 v2.20.2
