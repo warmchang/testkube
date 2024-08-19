@@ -35,7 +35,7 @@ require (
 	github.com/kubepug/kubepug v1.7.1
 	github.com/kubeshop/testkube-operator v1.15.2-beta1.0.20240719112653-d677ef7c3437
 	github.com/minio/minio-go/v7 v7.0.47
-	github.com/montanaflynn/stats v0.6.6
+	github.com/montanaflynn/stats v0.7.1
 	github.com/moogar0880/problems v0.1.1
 	github.com/nats-io/nats-server/v2 v2.10.16
 	github.com/nats-io/nats.go v1.35.0
