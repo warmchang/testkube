@@ -8,11 +8,24 @@ import (
 	"github.com/kubeshop/testkube/pkg/api/v1/testkube"
 )
 
+type Label struct {
+	Key   string
+	Value *string
+	// If value is nil, we check if key exists / not exists
+	Exists *bool
+}
+
+type LabelSelector struct {
+	Or []Label
+}
+
 const PageDefaultLimit int = 100
 
 type Filter interface {
 	Name() string
 	NameDefined() bool
+	Names() []string
+	NamesDefined() bool
 	LastNDays() int
 	LastNDaysDefined() bool
 	StartDate() time.Time
@@ -27,6 +40,7 @@ type Filter interface {
 	TextSearch() string
 	Selector() string
 	TagSelector() string
+	LabelSelector() *LabelSelector
 }
 
 //go:generate mockgen -destination=./mock_repository.go -package=testworkflow "github.com/kubeshop/testkube/pkg/repository/testworkflow" Repository

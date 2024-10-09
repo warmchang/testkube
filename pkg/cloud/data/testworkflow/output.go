@@ -1,7 +1,6 @@
 package testworkflow
 
 import (
-	"bytes"
 	"context"
 	"crypto/tls"
 	"io"
@@ -10,6 +9,7 @@ import (
 	"github.com/pkg/errors"
 	"google.golang.org/grpc"
 
+	"github.com/kubeshop/testkube/pkg/bufferedstream"
 	"github.com/kubeshop/testkube/pkg/repository/testworkflow"
 
 	"github.com/kubeshop/testkube/pkg/cloud"
@@ -60,20 +60,29 @@ func (r *CloudOutputRepository) PresignReadLog(ctx context.Context, id, workflow
 
 // SaveLog streams the output from the workflow to Cloud
 func (r *CloudOutputRepository) SaveLog(ctx context.Context, id, workflowName string, reader io.Reader) error {
+	// TODO: consider how to choose the temp dir
+	buffer, err := bufferedstream.NewBufferedStream("", "log", reader)
+	if err != nil {
+		return err
+	}
+	bufferLen := buffer.Len()
+	if bufferLen == 0 {
+		// http.Request won't send Content-Length: 0, if the body is non-nil
+		buffer.Cleanup()
+		buffer = nil
+	} else {
+		defer buffer.Cleanup()
+	}
 	url, err := r.PresignSaveLog(ctx, id, workflowName)
 	if err != nil {
 		return err
 	}
-	// FIXME: It should stream instead
-	data, err := io.ReadAll(reader)
+	req, err := http.NewRequestWithContext(ctx, http.MethodPut, url, buffer)
 	if err != nil {
 		return err
 	}
-	req, err := http.NewRequestWithContext(ctx, http.MethodPut, url, bytes.NewBuffer(data))
 	req.Header.Add("Content-Type", "application/octet-stream")
-	if err != nil {
-		return err
-	}
+	req.ContentLength = int64(bufferLen)
 	res, err := r.httpClient.Do(req)
 	if err != nil {
 		return errors.Wrap(err, "failed to save file in cloud storage")

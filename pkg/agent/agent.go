@@ -9,14 +9,13 @@ import (
 	"os"
 	"time"
 
-	"google.golang.org/grpc/keepalive"
-
 	"github.com/kubeshop/testkube/pkg/executor/output"
 	"github.com/kubeshop/testkube/pkg/version"
 
 	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/encoding/gzip"
+	"google.golang.org/grpc/keepalive"
 
 	"github.com/pkg/errors"
 	"github.com/valyala/fasthttp"
@@ -378,7 +377,7 @@ func (ag *Agent) runWorkers(ctx context.Context, numWorkers int) error {
 	return g.Wait()
 }
 
-func (ag *Agent) executeCommand(ctx context.Context, cmd *cloud.ExecuteRequest) *cloud.ExecuteResponse {
+func (ag *Agent) executeCommand(_ context.Context, cmd *cloud.ExecuteRequest) *cloud.ExecuteResponse {
 	switch {
 	case cmd.Url == healthcheckCommand:
 		return &cloud.ExecuteResponse{MessageId: cmd.MessageId, Status: 0}

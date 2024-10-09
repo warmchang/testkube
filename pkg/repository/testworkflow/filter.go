@@ -7,16 +7,18 @@ import (
 )
 
 type FilterImpl struct {
-	FName        string
-	FLastNDays   int
-	FStartDate   *time.Time
-	FEndDate     *time.Time
-	FStatuses    []testkube.TestWorkflowStatus
-	FPage        int
-	FPageSize    int
-	FTextSearch  string
-	FSelector    string
-	FTagSelector string
+	FName          string
+	FNames         []string
+	FLastNDays     int
+	FStartDate     *time.Time
+	FEndDate       *time.Time
+	FStatuses      []testkube.TestWorkflowStatus
+	FPage          int
+	FPageSize      int
+	FTextSearch    string
+	FSelector      string
+	FTagSelector   string
+	FLabelSelector *LabelSelector
 }
 
 func NewExecutionsFilter() *FilterImpl {
@@ -26,6 +28,11 @@ func NewExecutionsFilter() *FilterImpl {
 
 func (f *FilterImpl) WithName(name string) *FilterImpl {
 	f.FName = name
+	return f
+}
+
+func (f *FilterImpl) WithNames(names []string) *FilterImpl {
+	f.FNames = names
 	return f
 }
 
@@ -77,12 +84,25 @@ func (f *FilterImpl) WithTagSelector(tagSelector string) *FilterImpl {
 	return f
 }
 
+func (f *FilterImpl) WithLabelSelector(selector *LabelSelector) *FilterImpl {
+	f.FLabelSelector = selector
+	return f
+}
+
 func (f FilterImpl) Name() string {
 	return f.FName
 }
 
 func (f FilterImpl) NameDefined() bool {
 	return f.FName != ""
+}
+
+func (f FilterImpl) Names() []string {
+	return f.FNames
+}
+
+func (f FilterImpl) NamesDefined() bool {
+	return len(f.FNames) > 0
 }
 
 func (f FilterImpl) LastNDaysDefined() bool {
@@ -139,4 +159,8 @@ func (f FilterImpl) Selector() string {
 
 func (f FilterImpl) TagSelector() string {
 	return f.FTagSelector
+}
+
+func (f FilterImpl) LabelSelector() *LabelSelector {
+	return f.FLabelSelector
 }
