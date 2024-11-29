@@ -64,9 +64,9 @@ require (
 	github.com/slack-go/slack v0.12.2
 	github.com/spf13/afero v1.11.0
 	github.com/spf13/cobra v1.8.1
-	github.com/stretchr/testify v1.9.0
+	github.com/stretchr/testify v1.10.0
 	github.com/valyala/fasthttp v1.52.0
-	github.com/vektah/gqlparser/v2 v2.5.2-0.20230422221642-25e09f9d292d
+	github.com/vektah/gqlparser/v2 v2.5.20
 	github.com/wI2L/jsondiff v0.6.0
 	go.mongodb.org/mongo-driver v1.14.0
 	go.uber.org/zap v1.27.0
@@ -94,7 +94,7 @@ require (
 	github.com/AlecAivazis/survey/v2 v2.3.7 // indirect
 	github.com/Masterminds/goutils v1.1.1 // indirect
 	github.com/Microsoft/go-winio v0.6.1 // indirect
-	github.com/agnivade/levenshtein v1.1.1 // indirect
+	github.com/agnivade/levenshtein v1.2.0 // indirect
 	github.com/alecthomas/chroma/v2 v2.8.0 // indirect
 	github.com/andybalholm/brotli v1.1.0 // indirect
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
