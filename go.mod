@@ -7,7 +7,7 @@ require (
 	github.com/Masterminds/semver v1.5.0
 	github.com/adhocore/gronx v1.8.1
 	github.com/avast/retry-go/v4 v4.6.0
-	github.com/bmatcuk/doublestar/v4 v4.6.1
+	github.com/bmatcuk/doublestar/v4 v4.7.1
 	github.com/cdevents/sdk-go v0.3.0
 	github.com/cli/cli/v2 v2.62.0
 	github.com/cloudevents/sdk-go/v2 v2.15.2
