@@ -76,7 +76,7 @@ require (
 	golang.org/x/text v0.21.0
 	google.golang.org/appengine v1.6.8
 	google.golang.org/grpc v1.67.1
-	google.golang.org/protobuf v1.35.1
+	google.golang.org/protobuf v1.36.4
 	gopkg.in/yaml.v2 v2.4.0
 	gopkg.in/yaml.v3 v3.0.1
 	k8s.io/api v0.29.3
