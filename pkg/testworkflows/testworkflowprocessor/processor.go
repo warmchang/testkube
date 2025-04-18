@@ -23,6 +23,7 @@ import (
 	"github.com/kubeshop/testkube/pkg/testworkflows/testworkflowprocessor/action/actiontypes/lite"
 	"github.com/kubeshop/testkube/pkg/testworkflows/testworkflowprocessor/constants"
 	"github.com/kubeshop/testkube/pkg/testworkflows/testworkflowprocessor/stage"
+	"github.com/kubeshop/testkube/pkg/testworkflows/testworkflowresolver"
 )
 
 //go:generate mockgen -destination=./mock_processor.go -package=testworkflowprocessor "github.com/kubeshop/testkube/pkg/testworkflows/testworkflowprocessor" Processor
@@ -320,11 +321,14 @@ func (p *processor) Bundle(ctx context.Context, workflow *testworkflowsv1.TestWo
 	containers := make([]corev1.Container, len(actionGroups))
 	for i := range actionGroups {
 		var bareActions []actiontypes.Action
-		containers[i], bareActions, err = action.CreateContainer(i, layer.ContainerDefaults(), actionGroups[i], usesToolkit)
+		var globalEnv []testworkflowsv1.EnvVar
+		containers[i], globalEnv, bareActions, err = action.CreateContainer(i, layer.ContainerDefaults(), actionGroups[i], usesToolkit)
 		actionGroups[i] = bareActions
 		if err != nil {
 			return nil, errors.Wrap(err, "building Kubernetes containers")
 		}
+
+		options.Config.Execution.GlobalEnv = testworkflowresolver.DedupeEnvVars(append(options.Config.Execution.GlobalEnv, globalEnv...))
 	}
 
 	for i := range containers {

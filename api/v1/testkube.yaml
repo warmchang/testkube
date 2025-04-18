@@ -8113,6 +8113,9 @@ components:
           $ref: "#/components/schemas/TestWorkflowConfigValue"
         tags:
           $ref: "#/components/schemas/TestWorkflowTagValue"
+        target:
+          $ref: "#/components/schemas/ExecutionTarget"
+
 
     TestTriggerConditionSpec:
       type: object
@@ -8773,6 +8776,8 @@ components:
           description: generated reports from the steps, like junit
           items:
             $ref: "#/components/schemas/TestWorkflowReport"
+        resourceAggregations:
+          $ref: "#/components/schemas/TestWorkflowExecutionResourceAggregationsReport"
       required:
         - id
         - name
@@ -9620,6 +9625,8 @@ components:
           selector:
             $ref: "#/components/schemas/LabelSelector"
             description: label selector for test workflow
+          target:
+            $ref: "#/components/schemas/ExecutionTarget"
 
     TestWorkflowStepExecuteTestRef:
       type: object
@@ -10266,6 +10273,8 @@ components:
             type: string
         config:
           $ref: "#/components/schemas/TestWorkflowConfigValue"
+        target:
+          $ref: "#/components/schemas/ExecutionTarget"
 
     TestWorkflowExecutionCR:
       type: object
@@ -10306,7 +10315,7 @@ components:
         tags:
           $ref: "#/components/schemas/TestWorkflowTagValue"
         target:
-          $ref: "#/components/schemas/TestWorkflowTarget"
+          $ref: "#/components/schemas/ExecutionTarget"
 
     TestWorkflowExecutionTags:
       type: object
@@ -10365,6 +10374,8 @@ components:
     EnvVar:
       type: object
       properties:
+        global:
+          $ref: "#/components/schemas/BoxedBoolean"    
         name:
           type: string
         value:
