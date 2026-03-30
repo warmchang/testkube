@@ -70,7 +70,7 @@ jobs:
         with:
           distribution: goreleaser-pro
           version: 'v2.3.2' # 2.4.4 fails with "no such file or directory"
-          args: release -f ${{ matrix.path }} --skip=publish,validate
+          args: release -f ${{ matrix.path }} --skip=publish,validate --override
         env:
           GITHUB_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
           ANALYTICS_TRACKING_ID: "${{secrets.TESTKUBE_CLI_GA_MEASUREMENT_ID}}"
@@ -157,7 +157,7 @@ jobs:
         with:
           distribution: goreleaser-pro
           version: 'v2.3.2' # 2.4.4 fails with "no such file or directory"
-          args: release -f .goreleaser.yml --skip=validate
+          args: release -f .goreleaser.yml --skip=validate --override
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
           ANALYTICS_TRACKING_ID: "${{secrets.TESTKUBE_CLI_GA_MEASUREMENT_ID}}"
