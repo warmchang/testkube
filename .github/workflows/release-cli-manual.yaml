@@ -70,7 +70,7 @@ jobs:
         with:
           distribution: goreleaser-pro
           version: 'v2.3.2' # 2.4.4 fails with "no such file or directory"
-          args: release -f ${{ matrix.path }} --skip=publish,validate --override
+          args: release -f ${{ matrix.path }} --skip=publish,validate
         env:
           GITHUB_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
           ANALYTICS_TRACKING_ID: "${{secrets.TESTKUBE_CLI_GA_MEASUREMENT_ID}}"
@@ -152,12 +152,29 @@ jobs:
           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
           restore-keys: |
             ${{ runner.os }}-go-
+      - name: Get tag
+        id: tag
+        run: |
+          git fetch --tags --force
+          TAG=$(git describe --tags --abbrev=0)
+          TAG_STRIPPED=${TAG#v}
+          echo "tag=${TAG_STRIPPED}" >> "$GITHUB_OUTPUT"
+      - name: Check if GitHub release already exists
+        id: release-check
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: |
+          if gh release view "${{ steps.tag.outputs.tag }}" --repo "${{ github.repository }}" >/dev/null 2>&1; then
+            echo "skip_publish=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip_publish=false" >> "$GITHUB_OUTPUT"
+          fi
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v7
         with:
           distribution: goreleaser-pro
           version: 'v2.3.2' # 2.4.4 fails with "no such file or directory"
-          args: release -f .goreleaser.yml --skip=validate --override
+          args: release -f .goreleaser.yml --skip=validate${{ steps.release-check.outputs.skip_publish == 'true' && ',publish' || '' }}
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
           ANALYTICS_TRACKING_ID: "${{secrets.TESTKUBE_CLI_GA_MEASUREMENT_ID}}"
@@ -165,14 +182,6 @@ jobs:
           SLACK_BOT_CLIENT_ID: "${{secrets.TESTKUBE_SLACK_BOT_CLIENT_ID}}"
           SLACK_BOT_CLIENT_SECRET: "${{secrets.TESTKUBE_SLACK_BOT_CLIENT_SECRET}}"
           GORELEASER_KEY: ${{ secrets.GORELEASER_KEY }}
-      - name: Get tag
-        id: tag
-        run: |
-          git fetch --tags --force
-          TAG=$(git describe --tags --abbrev=0)
-          # Expose the tag (without leading "v" if present) as a step output
-          TAG_STRIPPED=${TAG#v}
-          echo "tag=${TAG_STRIPPED}" >> "$GITHUB_OUTPUT"
       - name: Publish package
         env:
           USERNAME: "aptly"
