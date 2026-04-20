@@ -57,6 +57,18 @@ const (
 	TKErrAgentGetFailed ErrorCode = "TKERR-1501"
 	// TKErrAgentRotateKeyFailed is returned when rotating an agent's secret key fails.
 	TKErrAgentRotateKeyFailed ErrorCode = "TKERR-1502"
+
+	// TKERR-16xx errors are related to marketplace operations.
+
+	// TKErrMarketplaceFetchFailed is returned when fetching marketplace content (catalog, YAML, readme) fails.
+	TKErrMarketplaceFetchFailed ErrorCode = "TKERR-1601"
+	// TKErrMarketplaceWorkflowNotFound is returned when the requested workflow is not present in the catalog.
+	TKErrMarketplaceWorkflowNotFound ErrorCode = "TKERR-1602"
+	// TKErrMarketplaceInvalidParameter is returned for any parameter-related
+	// failure: the workflow spec.config could not be parsed, a --set value
+	// is malformed or references an unknown key, or the parameter values
+	// could not be re-applied to the workflow YAML.
+	TKErrMarketplaceInvalidParameter ErrorCode = "TKERR-1603"
 )
 
 const helpUrl = "https://testkubeworkspace.slack.com"
