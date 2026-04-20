@@ -299,3 +299,13 @@ func (c TestWorkflowClient) ReRunTestWorkflowExecution(workflow, id string, runn
 
 	return c.testWorkflowExecutionTransport.Execute(http.MethodPost, uri, body, nil)
 }
+
+// ExportExecutions downloads the export archive from the server
+func (c TestWorkflowClient) ExportExecutions(destination string, since string) (fileName string, err error) {
+	uri := c.testWorkflowTransport.GetURI("/export")
+	var params map[string][]string
+	if since != "" {
+		params = map[string][]string{"since": {since}}
+	}
+	return c.testWorkflowTransport.GetFile(uri, ExportArchiveFileName, destination, params)
+}
