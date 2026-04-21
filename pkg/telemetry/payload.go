@@ -54,6 +54,10 @@ type Params struct {
 	Step                       string     `json:"step,omitempty"`
 	Email                      string     `json:"email,omitempty"`
 	Source                     string     `json:"source,omitempty"`
+	PreviewExecutionID         string     `json:"preview_execution_id,omitempty"`
+	PreviewArtifacts           int32      `json:"preview_artifacts,omitempty"`
+	PreviewSkipArtifacts       bool       `json:"preview_skip_artifacts,omitempty"`
+	PreviewError               string     `json:"preview_error,omitempty"`
 	AgentCapabilities          []string   `json:"agent_capabilities,omitempty"`
 }
 
