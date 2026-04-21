@@ -51,7 +51,7 @@ func (w *failingExecutionLogsWriter) Reset() error {
 	return nil
 }
 
-func TestExecutionSaverEnd_SkipsLogSaveWhenStorageDisabled(t *testing.T) {
+func TestExecutionSaverEnd_SkipsLogSaveWhenArchiveIsNotRequired(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	client := controlplaneclient.NewMockClient(ctrl)
 	logs := &failingExecutionLogsWriter{}
@@ -73,7 +73,7 @@ func TestExecutionSaverEnd_SkipsLogSaveWhenStorageDisabled(t *testing.T) {
 	require.False(t, logs.saveCalled)
 }
 
-func TestExecutionSaverEnd_LogSaveFailureBlocksFinalizationWhenStorageEnabled(t *testing.T) {
+func TestExecutionSaverEnd_LogSaveFailureBlocksFinalizationWhenArchiveIsRequired(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	client := controlplaneclient.NewMockClient(ctrl)
 	logs := &failingExecutionLogsWriter{enabled: true, saveErr: errors.New("object storage unavailable")}
@@ -91,7 +91,7 @@ func TestExecutionSaverEnd_LogSaveFailureBlocksFinalizationWhenStorageEnabled(t 
 func TestExecutionSaverEnd_OutputSaveFailureBlocksFinalization(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	client := controlplaneclient.NewMockClient(ctrl)
-	logs := &failingExecutionLogsWriter{enabled: true}
+	logs := &failingExecutionLogsWriter{}
 	saver, err := NewExecutionSaver(context.Background(), client, "execution-id", "org-id", "env-id", "runner-id", logs)
 	require.NoError(t, err)
 
