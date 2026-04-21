@@ -31999,7 +31999,7 @@ spec:
                   parameters:
                     description: |-
                       Parameters defines config values and tags passed to the workflow.
-                      Config values support the Testkube expression language: {{resource.spec.replicas}}
+                      Config values support the Testkube expression language: {{`{{`}}resource.spec.replicas{{`}}`}}
                     properties:
                       config:
                         additionalProperties:
