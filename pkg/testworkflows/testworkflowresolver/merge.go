@@ -101,7 +101,7 @@ func MergePodDNSConfig(dst, include *corev1.PodDNSConfig) *corev1.PodDNSConfig {
 	return dst
 }
 
-func MergePodSecurityContext(dst, include *corev1.PodSecurityContext) *corev1.PodSecurityContext {
+func MergePodSecurityContext(dst, include *testworkflowsv1.WorkflowPodSecurityContext) *testworkflowsv1.WorkflowPodSecurityContext {
 	if dst == nil {
 		return include
 	} else if include == nil {
@@ -211,9 +211,22 @@ func MergeCapabilities(dst, include *corev1.Capabilities) *corev1.Capabilities {
 	} else if include == nil {
 		return dst
 	}
-	dst.Add = append(dst.Add, include.Add...)
-	dst.Drop = append(dst.Drop, include.Drop...)
+	dst.Add = mergeCapabilityList(dst.Add, include.Add)
+	dst.Drop = mergeCapabilityList(dst.Drop, include.Drop)
 	return dst
+}
+
+func mergeCapabilityList(dst, include []corev1.Capability) []corev1.Capability {
+	result := make([]corev1.Capability, 0, len(dst)+len(include))
+	seen := make(map[corev1.Capability]struct{}, len(dst)+len(include))
+	for _, item := range append(dst, include...) {
+		if _, ok := seen[item]; ok {
+			continue
+		}
+		seen[item] = struct{}{}
+		result = append(result, item)
+	}
+	return result
 }
 
 func MergeSELinuxOptions(dst, include *corev1.SELinuxOptions) *corev1.SELinuxOptions {
@@ -258,7 +271,7 @@ func MergeWindowsSecurityContextOptions(dst, include *corev1.WindowsSecurityCont
 	return dst
 }
 
-func MergeSecurityContext(dst, include *corev1.SecurityContext) *corev1.SecurityContext {
+func MergeSecurityContext(dst, include *testworkflowsv1.WorkflowSecurityContext) *testworkflowsv1.WorkflowSecurityContext {
 	if dst == nil {
 		return include
 	} else if include == nil {
